@@ -1,0 +1,23 @@
+syntax="proto3";
+
+option go_package="github.com/maikwork/grpcShortlink/api/grpc";
+
+message RequestCreateLink {
+    string link = 1;
+}
+
+message ResponseCreateLink {
+}
+
+message RequestGetLink {
+    string shortLink = 1;
+}
+
+message ResponseGetLink {
+    string link = 1;
+}
+
+service ShortLinkService {
+    rpc CreateLink(RequestCreateLink) returns (ResponseCreateLink);
+    rpc GetLink(RequestGetLink) returns (ResponseGetLink);
+}
