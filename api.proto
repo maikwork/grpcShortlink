@@ -1,7 +1,5 @@
 syntax="proto3";
 
-option go_package="github.com/maikwork/grpcShortlink/api/grpc";
-
 message RequestCreateLink {
     string link = 1;
 }
