@@ -32,7 +32,7 @@ func main() {
 
 	l, err := net.Listen("tcp", "localhost:8080")
 	if err != nil {
-		log.Fatal("Don't connect: %v", err)
+		log.Fatalf("Don't connect: %v", err)
 	}
 	defer l.Close()
 
