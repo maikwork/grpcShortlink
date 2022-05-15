@@ -1,5 +1,14 @@
 version: '3.7'
 services:
+    web:
+      image: golang
+      restart: always
+      command: sh -c "go run ./cmd/server/main.go"
+      ports:
+        - 12200:12200
+        - 8000:8081
+      depends_on:
+        - postgres
     postgres:
         image: postgres
         restart: always
@@ -16,6 +25,3 @@ services:
           - ./postgres.conf:/etc/postgresql/postgresql.conf
           - ./data:/var/lib/postgresql/data
           - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
-    # app:
-    #   image: go
-    #   command: sh -c "go run "
