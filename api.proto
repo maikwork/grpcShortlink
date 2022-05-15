@@ -1,21 +1,34 @@
 syntax="proto3";
 
+option go_package=".;pb";
+
+import "google/api/annotations.proto";
+
 message RequestCreateLink {
-    string link = 1;
+    string long = 1;
 }
 
 message ResponseCreateLink {
 }
 
 message RequestGetLink {
-    string shortLink = 1;
+    string short = 1;
 }
 
 message ResponseGetLink {
-    string link = 1;
+    string long = 1;
 }
 
 service ShortLinkService {
-    rpc CreateLink(RequestCreateLink) returns (ResponseCreateLink);
-    rpc GetLink(RequestGetLink) returns (ResponseGetLink);
+    rpc CreateLink(RequestCreateLink) returns (ResponseCreateLink) {
+        option (google.api.http) = {
+            post: "/link/{long}"
+            body: "*"
+        };
+    }
+    rpc GetLink(RequestGetLink) returns (ResponseGetLink) {
+        option (google.api.http) = {
+            get: "/link/{short}"
+        };
+    }
 }
