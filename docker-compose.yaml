@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+    postgres:
+        image: postgres
+        restart: always
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        ports:
+          - '5438:5432'
+        volumes: 
+          - ./postgres.conf:/etc/postgresql/postgresql.conf
+          - ./data:/var/lib/postgresql/data
+          - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    # app:
+    #   image: go
+    #   command: sh -c "go run "
