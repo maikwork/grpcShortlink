@@ -2,13 +2,15 @@ version: '3.7'
 services:
     web:
       image: golang
-      restart: always
       command: sh -c "go run ./cmd/server/main.go"
       ports:
         - 12200:12200
         - 8000:8081
       depends_on:
         - postgres
+      working_dir: /app
+      volumes:
+        - ./app:/app/
     postgres:
         image: postgres
         restart: always
