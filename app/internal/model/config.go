@@ -1,10 +1,8 @@
 package model
 
 type DB struct {
-	Name     string `yaml:"name"`
-	Username string `yaml:"username"`
-	Pass     string `yaml:"pass"`
-	DB       string `yaml:"db"`
+	Name string `yaml:"name"`
+	URL string `yaml:"jdbc"`
 }
 
 type REST struct {

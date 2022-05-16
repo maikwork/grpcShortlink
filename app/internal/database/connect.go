@@ -11,9 +11,7 @@ import (
 )
 
 func Connect(d model.DB) (*sql.DB, error) {
-	connStr := fmt.Sprintf("user=%v password=%v dbname=%v sslmode=disable", d.Username, d.Pass, d.DB)
-
-	db, err := sql.Open(d.Name, connStr)
+	db, err := sql.Open(d.Name, d.URL)
 	if err != nil {
 		log.Printf("Don't open a connection to the sql")
 		return nil, err
