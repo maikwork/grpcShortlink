@@ -4,7 +4,6 @@ setting_serv:
   grpc:
     grpc_port: "12200"
 db:
-  name: postgres
-  user: postgres
-  db: links
-  pass: postgres
+  # first user - it's name of user for connection
+  # second user - it's db name. It is created with this name by default if POSTGRES_DBNAME is not overridden 
+  jdbs: postgres://user:pass@localhost:8081/user
