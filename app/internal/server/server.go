@@ -64,6 +64,7 @@ func runRest(srv *Server) {
 func runGrpc(srv *Server) {
 	pg := srv.conf.SettingServ.GRPC.Port
 	port := fmt.Sprintf(":%v", pg)
+
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)

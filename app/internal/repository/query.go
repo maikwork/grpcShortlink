@@ -7,16 +7,16 @@ import (
 	"github.com/maikwork/grpcGeteway/internal/domain"
 )
 
-func (s *SQL) Create(link string) {
+func (s *SQL) Create(long string) {
 	fmt.Printf("Create link")
 	db := s.conn
 
-	short, err := domain.Decode(link)
+	short, err := domain.Decode(long)
 	if err != nil {
 		log.Printf("%v", err)
 	}
 
-	query := fmt.Sprintf("INSERT INTO links(long, short) VALUES('%v', '%v')", link, d)
+	query := fmt.Sprintf("INSERT INTO links(long, short) VALUES('%v', '%v')", long, short)
 
 	_, err = db.Query(query)
 	if err != nil {
